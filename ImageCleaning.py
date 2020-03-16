@@ -10,7 +10,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import matplotlib.pyplot as plt
 from PIL import Image, ImageOps
 
-#mount googledrive
+#mount Google Drive
 from google.colab import drive
 drive.mount('/content/gdrive')
 
@@ -29,7 +29,7 @@ def cleaner(file):
 
     return ImageOps.expand(image, padding)
 
-#load gesture images from Google Drive
+#load and clean images from Google Drive
 def loadImages(folder):
     startTime = time.time() 
 
@@ -61,7 +61,7 @@ def verifyImages(dataset):
 
 #example usage with folder named "Overfit"
 #within the folder "Overfit" there are two subfolders named "NotSnow" and "Snow"
-#the subfolder name which is alphabetically first will be labelled as class 0
-#the second folder will be labelled as class 1
+#the subfolder name which is alphabetically first will be labeled as class 0
+#the second folder will be labeled as class 1
 overfitImages = loadImages("/content/gdrive/My Drive/Colab Notebooks/ProjectData/Overfit")
 verifyImages(overfitImages)
