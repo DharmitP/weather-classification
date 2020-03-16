@@ -44,9 +44,7 @@ def loadImages(folder):
 #verify that the images have been loaded and labeled
 def verifyImages(dataset):
     #prepare dataloader
-    startTime = time.time()
     dataLoader = torch.utils.data.DataLoader(dataset, batch_size=32, num_workers=1, shuffle=True)
-    startTime = time.time()
 
     #verification step - obtain one batch of images
     dataiter = iter(dataLoader)
