@@ -19,7 +19,7 @@ def cleaner(file):
     #resize image while keeping aspect ratio (e.g. 500x375 becomes 224x168)
     x = 224
     y = 224
-    image = Image.open(file)
+    image = Image.open(file).convert("RGB")
     image.thumbnail((x, y), Image.ANTIALIAS)
 
     #add symmetrical black padding to the smaller dimension to match the desired x and y
