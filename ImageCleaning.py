@@ -50,13 +50,18 @@ def verifyImages(dataset):
     dataiter = iter(dataLoader)
     images, labels = dataiter.next()
     images = images.numpy() #convert images to numpy for display
-    classes = ["Not Snow", "Snow"]
+    classes = ["NotSnow", "Snow"]
 
     #plot the images in the batch, along with the corresponding labels
     fig = plt.figure(figsize=(25, 4))
     for idx in np.arange(6):
         ax = fig.add_subplot(2, 20/2, idx+1, xticks=[], yticks=[])
-        plt.imshow(np.transpose(images[idx], (1, 2, 0)))
+        mean = np.array([0.485, 0.456, 0.406])
+        std = np.array([0.229, 0.224, 0.225])
+        picture = np.transpose(images[idx], (1, 2, 0))
+        picture = std * picture + mean
+        picture = np.clip(picture, 0, 1)
+        plt.imshow(picture)
         ax.set_title(classes[labels[idx]])
 
 #example usage with folder named "Overfit"
