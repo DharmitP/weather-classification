@@ -29,23 +29,12 @@ def cleaner(file):
 
     return ImageOps.expand(image, padding)
 
-#load and clean images from Google Drive
+#load images from Google Drive
 def loadImages(folder):
-    startTime = time.time() 
-
-    #load images from Google Drive
-def loadImages(folder):
-    startTime = time.time() 
-
     #transform to tensor and normalize
     transform = transforms.Compose([transforms.ToTensor(), 
                                     transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                                        std=[0.229, 0.224, 0.225])])
-
-    #load data from Google Drive and clean them as they load
-    dataset = torchvision.datasets.ImageFolder(root=folder, loader=cleaner, transform=transform)
-    
-    return dataset
+                                    std=[0.229, 0.224, 0.225])])
 
     #load data from Google Drive and clean them as they load
     dataset = torchvision.datasets.ImageFolder(root=folder, loader=cleaner, transform=transform)
